@@ -1,0 +1,10 @@
+#you can use this code at cmd to make azure service simple chatbot
+
+#this code make app name and password
+az ad app create --display-name "AI_CHAT_BOT" --password "blue1004!!!!!!!!" --available-to-other-tenants
+
+#this code deploy your bot you have change name
+az deployment create --name "botdeploy1" --template-file "template-with-new-rg.json" --location "koreacentral" --parameters appId="735091f3-31bb-4d4a-943e-66a489cde177" appSecret="blue1004!!!!!!!!" botId="AICHATBOT003" botSku=F0 newAppServicePlanName="noas02" newWebAppName="nown02" groupName="rgngn2" groupLocation="koreacentral" newAppServicePlanLocation="koreacentral"
+
+#first you have to zip your file 
+az webapp deployment source config-zip --resource-group "rgngn2" --name "nown02" --src "C:\project\bot\echo-bot\echo-bot.zip" 
